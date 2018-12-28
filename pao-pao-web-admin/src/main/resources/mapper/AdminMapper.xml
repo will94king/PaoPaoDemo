@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gz.pao.pao.web.admin.mapper.AdminMapper">
+    <sql id="adminColumns">
+        a.id,
+        a.admin_name AS adminName,
+        a.admin_password AS adminPassword
+    </sql>
+
+    <select id="getInfoByName" resultType="Admin" parameterType="Admin">
+        SELECT
+        <include refid="adminColumns"></include>
+        FROM
+        p_admin AS a
+        WHERE
+        a.admin_name = #{adminName}
+    </select>
+
+    <!--删除用户个人信息功能-->
+    <update id="delete">
+        UPDATE
+            p_user
+        SET
+            status = 0
+        WHERE id=#{id}
+    </update>
+
+    <!--还原用户个人信息功能-->
+    <update id="callback">
+        UPDATE
+            p_user
+        SET
+            status = 1
+        WHERE id=#{id}
+    </update>
+
+</mapper>

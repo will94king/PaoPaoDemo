@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gz.pao.pao.web.admin.mapper.RegisterMapper">
+    <!--注册新用户-->
+    <insert id="insert">
+        INSERT INTO p_user (
+            id,
+            username,
+            password,
+            sex,
+            age,
+            height,
+            city,
+            phone,
+            email,
+            user_desc,
+            head_pic,
+            pic,
+            status
+        )
+        VALUES
+        (
+            #{id},
+            #{username},
+            #{password},
+            #{sex},
+            #{age},
+            #{height},
+            #{city},
+            #{phone},
+            #{email},
+            #{userDesc},
+            #{headPic},
+            #{pic},
+            #{status}
+        );
+    </insert>
+</mapper>

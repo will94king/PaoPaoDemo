@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gz.pao.pao.web.admin.mapper.UserMapper">
+    <sql id="userColumns">
+        a.id,
+        a.username,
+        a.password,
+        a.sex,
+        a.age,
+        a.height,
+        a.city,
+        a.phone,
+        a.email,
+        a.user_desc AS userDesc,
+        a.head_pic AS headPic,
+        a.pic,
+        a.status
+    </sql>
+
+    <!--这是根据前端信息登录功能-->
+    <select id="getByLoginId" resultType="User">
+        SELECT
+          <include refid="userColumns"/>
+        FROM
+          p_user AS a
+        WHERE
+          a.username = #{username} OR a.phone = #{phone} OR a.email = #{email}
+    </select>
+
+
+    <!--这是根据ID获取对应的用户信息-->
+    <select id="getInfoById" resultType="User" >
+        SELECT
+        <include refid="userColumns"/>
+        FROM
+        p_user AS a
+        WHERE
+        a.id=#{id} AND
+        a.status =1
+    </select>
+
+
+    <!--注册新用户的功能-->
+    <insert id="save">
+        INSERT INTO p_user (
+        username,
+        password,
+        sex,
+        age,
+        height,
+        city,
+        phone,
+        email,
+        user_desc,
+        head_pic
+        )
+        VALUES (
+        #{username},
+        #{password},
+        #{sex},
+        #{age},
+        #{height},
+        #{city},
+        #{phone},
+        #{email},
+        #{userDesc},
+        #{headPic}
+        )
+    </insert>
+
+
+    <!--这是编辑用户个人信息功能-->
+    <update id="edit" >
+    UPDATE
+    p_user
+    SET
+    username=#{username},
+    sex=#{sex},
+    age=#{age},
+    height=#{height},
+    city=#{city},
+    phone=#{phone},
+    email=#{email},
+    user_desc=#{userDesc},
+    head_pic=#{headPic},
+    pic=#{pic}
+      WHERE id=#{id}
+    </update>
+
+    <select id="page" resultType="User">
+        SELECT
+        <include refid="userColumns" />
+        FROM
+        p_user AS a
+        <where>
+            <if test="user != null and user.username != null and user.username != ''">
+                AND a.username LIKE CONCAT('%', #{user.username}, '%')
+            </if>
+
+            <if test="user != null and user.phone != null and user.phone != ''">
+                AND a.phone  LIKE CONCAT('%', #{user.phone}, '%')
+            </if>
+            <if test="user != null and user.email != null and user.email != ''">
+                AND a.email  LIKE CONCAT('%', #{user.email}, '%')
+            </if>
+
+
+        </where>
+        LIMIT #{start}, #{length}
+    </select>
+
+    <select id="count" resultType="Integer">
+        SELECT COUNT(*)
+        FROM
+        p_user AS a
+        <where>
+            <if test="username !=null and username !=''" >
+                AND a.username LIKE CONCAT('%',#{username}, '%')
+            </if>
+
+            <if test="phone !=null and phone !=''" >
+                AND a.phone LIKE CONCAT('%',#{phone}, '%')
+            </if>
+            <if test="email !=null and email !=''" >
+                AND a.email LIKE CONCAT('%',#{email}, '%')
+            </if>
+
+        </where>
+    </select>
+<!--修改密码-->
+    <update id="editpassword">
+        UPDATE
+        p_user
+        SET
+        password = #{password}
+        WHERE
+        id = #{id}
+    </update>
+</mapper>
