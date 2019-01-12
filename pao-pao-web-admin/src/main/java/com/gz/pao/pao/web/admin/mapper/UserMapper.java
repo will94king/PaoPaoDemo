@@ -13,8 +13,6 @@ public interface UserMapper {
 
     User getByLoginId(User params);
 
-    void save(User user);
-
     void edit(User user);
 
     List<User> page(Map<String,Object> params);
@@ -26,4 +24,6 @@ public interface UserMapper {
     int count(User user);
 
     void editpassword(User user);
+
+    void save(User user);
 }

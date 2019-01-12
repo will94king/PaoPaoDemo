@@ -19,13 +19,6 @@ public class UserServiceImpl implements UserService {
         return userMapper.getInfoById(id);
     }
 
-    //添加新的用户
-    @Override
-    public void save(User user) {
-
-        userMapper.save(user);
-    }
-
     //编辑当前用户
     @Override
     public User edit(User user) {

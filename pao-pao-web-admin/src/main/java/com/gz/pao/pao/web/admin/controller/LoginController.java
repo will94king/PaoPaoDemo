@@ -25,7 +25,7 @@ public class LoginController {
     //跳转到注册页
     @GetMapping(value = "/register")
     public String register(){
-        return "register/register";
+        return "register";
     }
 
     //此处为登录功能（可用用户名、手机、邮箱进行登录）

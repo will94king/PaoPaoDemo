@@ -39,11 +39,10 @@
             <mvc:exclude-mapping path="/admin/**" />
             <mvc:exclude-mapping path="/login" />
             <mvc:exclude-mapping path="/register" />
-            <mvc:exclude-mapping path="/save"/>
-            <mvc:exclude-mapping path="/regisok" />
             <mvc:exclude-mapping path="/logout" />
             <mvc:exclude-mapping path="/page" />
             <mvc:exclude-mapping path="/upload"/>
+            <mvc:exclude-mapping path="/add" />
             <bean class="com.gz.pao.pao.web.admin.interceptor.LoginInterceptor" />
         </mvc:interceptor>
         <mvc:interceptor>

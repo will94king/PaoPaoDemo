@@ -1,7 +1,7 @@
 package com.gz.pao.pao.web.admin.service.impl;
 
 import com.gz.pao.pao.web.admin.entity.User;
-import com.gz.pao.pao.web.admin.mapper.RegisterMapper;
+import com.gz.pao.pao.web.admin.mapper.UserMapper;
 import com.gz.pao.pao.web.admin.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,13 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class RegisterServiceImpl implements RegisterService {
     @Autowired
-    private RegisterMapper registerMapper;
+    private UserMapper userMapper;
 
     @Override
     public void register(User user) {
-        //新增注册
         if (preInsert(user)){
-            registerMapper.insert(user);
+            userMapper.save(user);
         }
     }
 

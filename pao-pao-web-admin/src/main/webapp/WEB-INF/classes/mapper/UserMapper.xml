@@ -39,36 +39,6 @@
         a.status =1
     </select>
 
-
-    <!--注册新用户的功能-->
-    <insert id="save">
-        INSERT INTO p_user (
-        username,
-        password,
-        sex,
-        age,
-        height,
-        city,
-        phone,
-        email,
-        user_desc,
-        head_pic
-        )
-        VALUES (
-        #{username},
-        #{password},
-        #{sex},
-        #{age},
-        #{height},
-        #{city},
-        #{phone},
-        #{email},
-        #{userDesc},
-        #{headPic}
-        )
-    </insert>
-
-
     <!--这是编辑用户个人信息功能-->
     <update id="edit" >
     UPDATE
@@ -136,4 +106,31 @@
         WHERE
         id = #{id}
     </update>
+<!--注册用户-->
+    <insert id="save">
+        INSERT INTO p_user (
+            username,
+            password,
+            sex,
+            age,
+            height,
+            city,
+            phone,
+            email,
+            user_desc,
+            head_pic
+        )
+        VALUES (
+                   #{username},
+                   #{password},
+                   #{sex},
+                   #{age},
+                   #{height},
+                   #{city},
+                   #{phone},
+                   #{email},
+                   #{userDesc},
+                   #{headPic}
+               )
+    </insert>
 </mapper>

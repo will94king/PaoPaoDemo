@@ -58,12 +58,6 @@ public class UserController {
         return "intro";
     }
 
-    //跳转到注册成功页面
-    @GetMapping(value = "/regisok")
-    public String regisok(){
-        return "regisok";
-    }
-
     //跳转到其他人的空间页面
     @GetMapping(value = "/other/info")
     public String otherinfo(Integer id,Model model){
@@ -72,12 +66,6 @@ public class UserController {
         return "/other/info";
     }
 
-    //此处为注册功能
-    @PostMapping(value = "/save")
-    public String register(User user){
-            userService.save(user);
-    return "/regisok";
-    }
 
     //此处为用户编辑功能
     @PostMapping(value = "/edit")

@@ -81,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="services">
             <div class="col-sm-6 login_left">
-                <form id="inputForm" action="/register/regi" method="post">
+                <form id="inputForm" action="/add" method="post">
                     <input type="hidden" name="id" />
                     <input type="hidden" name="status" value="1" />
                     <div class="form-group">
@@ -159,7 +159,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 </div>
-<%@ include file="../include/footer.jsp" %>
+<%@ include file="include/footer.jsp" %>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/static/cpts/js/jquery.min.js"></script>
